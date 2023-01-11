@@ -4,66 +4,122 @@
 <style>
 	p{
 		font-family:"Comic Sans MS";
-		
+		font-weight:bold;
 	}
 
 	h1{
 		font-family:"Comic Sans MS";
+		font-weight:bold;
+	}
+
+	td{
+		border-radius:5px;
+		border:3px solid black;
+		font-family:"Comic Sans MS";
+		font-weight:bold;
+		background-color:lightgray;
+		padding-right:5px;
+		padding-left:5px;
 	}
 
 	body{
 		background-color:lightgray;
+		font-weight:bold;
 	}
 
 	button{
 		background-color:lightgray;
+		font-weight:bold;
+		border-radius:3px;
 	}
 
-	hr{
-		background-color:black;
-	}
+
+
 </style>
 <body>
 <center>
 <hr>
-<h1>Pick A Number Game <3</h1>
+<h1>Pick A Number Game</h1>
 <hr>
-<p>Answer: <span id="Answer">?</span></p>
-<p>Guesses Left: <span id="Guesses">10</span></p>
-<p>Help: <span id="Help">?</span></p>
-<button onclick="reset()">
+<table>
+	<td>Answer: <span id="Answer">?</span> </td>
+	<td>Guesses Left: <span id="Guesses">10</span> </td>
+	<td>Help: <span id="Help">?</span> </td>
+</table>
+<br>
+<button id="playbutton" onclick="reset()">
 	Play
 </button>
-<button onclick="reveal()">
+<button id="revealbutton" onclick="reveal()">
 	Reveal Answer
 </button>
-<button onclick="guess()">
+<button id="guessbutton" onclick="guess()">
 	Guess
 </button>
-
+<br>
 <hr>
-<p>[ ! ] If you hit Reveal Answer it'll start a new game [ ! ]</p>
+<p>[!] If you hit Reveal Answer it'll start a new game [!]</p>
+<hr>
+
+<button onclick="guesses = 10; diff = 10; reset()" id="easy">
+	Easy - 10 guesses
+</button>
+<button onclick="guesses = 5; diff = 5; reset()" id="medium">
+	Medium - 5 guesses
+</button>
+<button onclick="guesses = 3; diff = 3; reset()" id="hard">
+	Hard - 3 guesses
+</button>
+<hr>
 </center>
 </body>
 <script type="text/javascript">
-console.log("HEY! I know you came here just to cheat!")
+document.getElementById("easy").style.backgroundColor = "lightgreen"
+document.getElementById("playbutton").style.backgroundColor = "lightblue";
+document.getElementById("revealbutton").style.backgroundColor = "lightgray";
+console.log("HEY! I know you came here to cheat!")
 var answer = 0
 var guesses = 10
-
+var diff = 10
 
 function reset(){
+	document.getElementById("playbutton").style.backgroundColor = "lightblue";
+	document.getElementById("revealbutton").style.backgroundColor = "lightgray";
+	changecolor()
+	guesses = diff
 	document.getElementById("Answer").innerHTML = "?";
-	document.getElementById("Guesses").innerHTML = "10";
+	document.getElementById("Guesses").innerHTML = guesses;
 	document.getElementById("Help").innerHTML = "?";
-	guesses = 10
 	answer = Math.floor(Math.random() * 101);
-	console.log(answer)
+}
+
+function changecolor(){
+	console.log(diff)
+	if(diff == 10){
+		document.getElementById("easy").style.backgroundColor = "lightgreen";
+		document.getElementById("medium").style.backgroundColor = "lightgray";
+		document.getElementById("hard").style.backgroundColor = "lightgray";
+	} else
+
+	if(diff == 5){
+		document.getElementById("easy").style.backgroundColor = "lightgray";
+		document.getElementById("medium").style.backgroundColor = "#ECFF69";
+		document.getElementById("hard").style.backgroundColor = "lightgray";
+	}else 
+
+	if(diff == 3){
+		document.getElementById("easy").style.backgroundColor = "lightgray";
+		document.getElementById("medium").style.backgroundColor = "lightgray";
+		document.getElementById("hard").style.backgroundColor = "red";
+	}
+	
 }
 
 function reveal(){
+	document.getElementById("playbutton").style.backgroundColor = "lightgray";
+	document.getElementById("revealbutton").style.backgroundColor = "lightblue";
 	document.getElementById("Answer").innerHTML = answer;
-	setTimeout(() => {  reset() }, 5000);
-	
+	setTimeout(() => {  reset() }, 3000);
 }
 
 function guess(){
@@ -75,7 +131,7 @@ function guess(){
 	if(guesses <= 0){
 		window.alert("GG but you ran out of guesses before you could win! Please wait 5 seconds for a new game to start.")
 		reveal()
-		setTimeout(() => {  reset() }, 5000);
+		setTimeout(() => {  reset() }, 3000);
 	} else
 	
 	if(guess > 100){
@@ -94,8 +150,10 @@ function guess(){
 	if(guess = answer){
 		document.getElementById("Help").innerHTML = "Congrats you won! Please wait 5 seconds for a new game to start.";
 		reveal()
-		setTimeout(() => {  reset() }, 5000);
+		setTimeout(() => {  reset() }, 3000);
 	}
 }
+
+
 </script>
 </html>
