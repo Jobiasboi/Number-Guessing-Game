@@ -1,43 +1,12 @@
 
 
 <html>
-<style>
-	p{
-		font-family:"Comic Sans MS";
-		font-weight:bold;
-	}
-
-	h1{
-		font-family:"Comic Sans MS";
-		font-weight:bold;
-	}
-
-	td{
-		border-radius:5px;
-		border:3px solid black;
-		font-family:"Comic Sans MS";
-		font-weight:bold;
-		background-color:lightgray;
-		padding-right:5px;
-		padding-left:5px;
-	}
-
-	body{
-		background-color:lightgray;
-		font-weight:bold;
-	}
-
-	button{
-		background-color:lightgray;
-		font-weight:bold;
-		border-radius:3px;
-	}
-
-
-
-</style>
+<link rel="stylesheet" type="text/css" href="styles.css" />
 <body>
 <center>
+<a href="index.html">
+<button style="padding-right:50px;padding-left:50px;font-size:17.5px;border:3px solid black;border-radius:5px;">Main Page</button>
+</a>
 <hr>
 <h1>Pick A Number Game</h1>
 <hr>
@@ -128,12 +97,6 @@ function guess(){
 	guesses = guesses - 1;
 	document.getElementById("Guesses").innerHTML = guesses;
 
-	if(guess = answer){
-		document.getElementById("Help").innerHTML = "Congrats you won! Please wait 5 seconds for a new game to start.";
-		reveal()
-		setTimeout(() => {  reset() }, 3000);
-	} else
-
 	if(guesses <= 0){
 		window.alert("GG but you ran out of guesses before you could win! Please wait 5 seconds for a new game to start.")
 		reveal()
@@ -151,6 +114,12 @@ function guess(){
 
 	if(guess < answer){
 		document.getElementById("Help").innerHTML = "Try something higher!";
+	} else
+
+	if(guess = answer){
+		document.getElementById("Help").innerHTML = "Congrats you won! Please wait 5 seconds for a new game to start.";
+		reveal()
+		setTimeout(() => {  reset() }, 3000);
 	}
 }
 
