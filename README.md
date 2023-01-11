@@ -2,4 +2,4 @@
 My First actual github repo! I hope you enjoy it <3
 A fun number guessing game made with css html and css
 
-Play at: https://rawcdn.githack.com/Jobiasboi/Number-Guessing-Game/2961e07e822fe1e49fb89045aeab79e8dcd2bb98/index.html
+Play at: [Here :)](https://rawcdn.githack.com/Jobiasboi/Number-Guessing-Game/d9b8c8f8dc60e9832b3227f22489a26b4cad18d8/PickANumber.html)
