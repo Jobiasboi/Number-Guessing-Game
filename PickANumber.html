@@ -128,6 +128,12 @@ function guess(){
 	guesses = guesses - 1;
 	document.getElementById("Guesses").innerHTML = guesses;
 
+	if(guess = answer){
+		document.getElementById("Help").innerHTML = "Congrats you won! Please wait 5 seconds for a new game to start.";
+		reveal()
+		setTimeout(() => {  reset() }, 3000);
+	}
+
 	if(guesses <= 0){
 		window.alert("GG but you ran out of guesses before you could win! Please wait 5 seconds for a new game to start.")
 		reveal()
@@ -146,14 +152,7 @@ function guess(){
 	if(guess < answer){
 		document.getElementById("Help").innerHTML = "Try something higher!";
 	} else
-
-	if(guess = answer){
-		document.getElementById("Help").innerHTML = "Congrats you won! Please wait 5 seconds for a new game to start.";
-		reveal()
-		setTimeout(() => {  reset() }, 3000);
-	}
 }
-
 
 </script>
 </html>
